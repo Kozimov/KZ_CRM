@@ -13,10 +13,10 @@ class Lead(models.Model):
     agent = models.ForeignKey("Agent", on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.ismi
+        return str(self.ismi)
 
 class Agent(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.user
+        return str(self.user)
