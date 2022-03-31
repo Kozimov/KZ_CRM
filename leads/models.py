@@ -1,3 +1,7 @@
 from django.db import models
 
-# Create your models here.
+
+class Lead(models.Model):
+    ismi = models.CharField(max_length=20)
+    familiyasi = models.CharField(max_length=20)
+    yoshi = models.IntegerField(default=0)
