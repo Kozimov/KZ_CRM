@@ -9,3 +9,10 @@ def leads_lists(request):
         "leads": leads,
     }
     return render(request, "leads_lists.html", context)
+
+
+def leads_detail(request, pk):
+    print(pk)
+    lead = models.Lead.objects.get(id=pk)
+    print(lead)
+    return render(request, 'details.html')

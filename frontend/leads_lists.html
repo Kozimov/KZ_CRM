@@ -23,7 +23,7 @@
     
     <h1>Kozimov CRM mijozlar</h1>
     {% for lead in leads %}
-        <div class="mijoz">{{ lead }}</div>
+        <div class="mijoz">{{ lead.ismi }} {{ lead.familiyasi }} {{ lead.yoshi }}</div>
     {% endfor %}    
 
 </body>
