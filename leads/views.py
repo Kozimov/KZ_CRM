@@ -1,5 +1,5 @@
-from multiprocessing import context
 from django.shortcuts import render
+from django.shortcuts import get_object_or_404
 from . import models
 
 
@@ -12,7 +12,5 @@ def leads_lists(request):
 
 
 def leads_detail(request, pk):
-    print(pk)
-    lead = models.Lead.objects.get(id=pk)
-    print(lead)
+    lead = get_object_or_404(models.Lead, id=pk)
     return render(request, 'details.html')
