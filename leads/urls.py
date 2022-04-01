@@ -5,5 +5,6 @@ app_name = "leads"
 
 urlpatterns = [
     path('', leads_lists),
-    path('<pk>/', leads_detail),
+    path('<int:pk>/', lead_detail),
+    path('create/', lead_create),
 ]
