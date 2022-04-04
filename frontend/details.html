@@ -15,9 +15,9 @@
     <h2>Ismi: {{ lead.familiyasi }}</h2>
     <h2>Ismi: {{ lead.yoshi }}</h2>
 
-    <a href="/leads/{{ lead.pk }}/update">O'zgartirish</a>
+    <a href="{% url 'leads:lead-update' lead.pk %}">O'zgartirish</a>
     <hr>
-    <a href="/leads/{{ lead.pk }}/delete">O'chirish</a>
+    <a href="{% url 'leads:lead-delete' lead.pk %}">O'chirish</a>
 
 
 </body>
