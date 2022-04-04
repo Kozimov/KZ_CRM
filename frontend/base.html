@@ -5,29 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %} {% endblock %}</title>
-    <style>
-        .mijoz {
-            padding-top: 15px;
-            padding-bottom: 15px;
-            padding-left: 8px;
-            padding-right: 8px;
-            margin-top: 10px;
-            background-color: #f6f6f6;
-            font-size: 21px;
-            font-family: Arial;
-            width: 100%;
-        }
-    </style>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body>
+    {% include 'details/navbar.html' %}
+    <div class="max-w-5xl mx-auto">
+        
+        {% block content %}
 
-    <h1>Menular</h1>
-
-    {% block content %}
-
-
-
-    {% endblock %}
-
+        {% endblock %}
+     
+    </div>
+    {% include 'details/footer.html' %} 
 </body>
 </html>

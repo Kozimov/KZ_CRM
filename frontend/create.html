@@ -1,19 +1,17 @@
-
 {% extends 'base.html' %}
 
 {% block title %} Mijoz yaratish {% endblock %}
 
 {% block content %}
 
-    <a href="/leads">Mijozlar bo'limi</a>
+    <a href="/leads/">Mijozlar bo'limi</a>
 
     <h1>Mijoz yaratish</h1>
-
     <form method="post">
-        {% csrf_token %}
+        <p>
+        {% csrf_token %} 
         {{ forms.as_p }}
         <button type="submit">Jo'natish</button>
     </form>
-
 
 {% endblock %}
