@@ -22,10 +22,10 @@
 <body>
     
     <h1>Kozimov CRM mijozlar</h1>
-    <a href="/leads/create">yaratish</a>
+    <a href="{% url 'leads:lead-create' %}">yaratish</a>
     {% for lead in leads %}
         <div class="mijoz">
-            <a href="/leads/{{ lead.pk }}/">
+            <a href="{% url 'leads:detallar' lead.pk %}">
                 {{ lead.ismi }} {{ lead.familiyasi }} 
             </a>
             {{ lead.yoshi }}
