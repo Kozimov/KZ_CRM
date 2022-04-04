@@ -9,11 +9,11 @@
 <body>
     <a href="/leads">Mijoz bolimi</a>
 
-    <h1>Malumotlarni ozgartirish: {{ lead.ismi }} {{ lead.familiyasi }}</h1>
+    <h1>Malumotlarni ozgartirish:</h1>
 
     <form method="post">
         {% csrf_token %}
-        {{ forms.as_p }}
+        {{ form.as_p }}
         <button type="submit">Jo'natish</button>
     </form>
 
