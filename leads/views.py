@@ -34,7 +34,7 @@ def lead_create(request):
     return render(request, "create.html", context)
 
 def lead_update(request, pk):
-    lead = Lead.objects.get(id=pk)
+    lead = models.Lead.objects.get(id=pk)
     form = LeadModelForm(instance=lead)
     if request.method == "POST":
         form = LeadModelForm(request.POST, instance=lead)
@@ -46,3 +46,9 @@ def lead_update(request, pk):
         'lead': lead
     }
     return render(request, "update.html", context)
+
+def lead_delete(request, pk):
+    lead = models.Lead.objects.get(id=pk)
+    lead.delete()
+    return redirect("/leads")
+
