@@ -46,3 +46,4 @@ class LeadDeleteView(DeleteView):
         return reverse("leads:lists")
 
 
+ 

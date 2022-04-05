@@ -6,4 +6,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', HomeView.as_view()),
     path('leads/', include('leads.urls', namespace="leads"))
-]
+] 
