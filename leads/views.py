@@ -1,8 +1,7 @@
 
 from multiprocessing import context
 from django.shortcuts import render, redirect
-from django.shortcuts import get_object_or_404
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView, ListView, DetailView
 from . import models
 from .forms import *
 
@@ -17,12 +16,11 @@ class ListsView(ListView):
     context_object_name = "leads"
 
 
-def lead_detail(request, pk):
-    lead = get_object_or_404(models.Lead, id=pk)
-    context = {
-        "lead": lead
-    }
-    return render(request, 'details.html', context)
+class LeadDetailView(DetailView):
+    template_name = "details.html"
+    queryset = models.Lead.objects.all()
+    context_object_name = "lead"
+
 
 def lead_create(request):
     form = LeadModelForm()
