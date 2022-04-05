@@ -24,14 +24,14 @@ class LeadDetailView(DetailView):
 
 
 class LeadCreateView(CreateView):
-    template_name = "create.html"
+    template_name = "leads/create.html"
     form_class = LeadModelForm
 
     def get_success_url(self):
         return reverse("leads:lists")
 
 class LeadUpdateView(UpdateView):
-    template_name = "update.html"
+    template_name = "leads/update.html"
     form_class = LeadModelForm
     queryset = models.Lead.objects.all()
 
@@ -39,19 +39,6 @@ class LeadUpdateView(UpdateView):
         return reverse("leads:lists")
 
 
-# def lead_update(request, pk):
-#     lead = models.Lead.objects.get(id=pk)
-#     form = LeadModelForm(instance=lead)
-#     if request.method == "POST":
-#         form = LeadModelForm(request.POST, instance=lead)
-#         if form.is_valid():
-#             form.save()
-#             return redirect("/leads")
-#     context = {
-#         "form": form,
-#         'lead': lead
-#     }
-#     return render(request, "update.html", context)
 
 def lead_delete(request, pk):
     lead = models.Lead.objects.get(id=pk)
