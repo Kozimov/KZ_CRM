@@ -5,12 +5,11 @@
 {% block content %}
 
     <a href="/leads/">Mijozlar bo'limi</a>
-
-    <h1>Mijoz yaratish</h1>
+    <hr>
     <form method="post">
         <p>
         {% csrf_token %} 
-        {{ forms.as_p }}
+        {{ form.as_p }}
         <button type="submit">Jo'natish</button>
     </form>
 

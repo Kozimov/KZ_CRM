@@ -1,9 +1,10 @@
 
 from multiprocessing import context
-from django.shortcuts import render, redirect
-from django.views.generic import TemplateView, ListView, DetailView
+from django.shortcuts import render, redirect, reverse
+from django.views.generic import TemplateView, ListView, DetailView, CreateView
 from . import models
 from .forms import *
+import leads
 
 
 class HomeView(TemplateView):
@@ -22,17 +23,13 @@ class LeadDetailView(DetailView):
     context_object_name = "lead"
 
 
-def lead_create(request):
-    form = LeadModelForm()
-    if request.method == "POST":
-        form = LeadModelForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect("/leads")
-    context = {
-        "forms": form
-    }
-    return render(request, "create.html", context)
+class LeadCreateView(CreateView):
+    template_name = "create.html"
+    form_class = LeadModelForm
+
+    def get_success_url(self):
+        return reverse("leads:lists")
+        
 
 def lead_update(request, pk):
     lead = models.Lead.objects.get(id=pk)
