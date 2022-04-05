@@ -2,16 +2,19 @@
 from multiprocessing import context
 from django.shortcuts import render, redirect
 from django.shortcuts import get_object_or_404
+from django.views.generic import TemplateView, ListView
 from . import models
 from .forms import *
 
 
-def leads_lists(request):
-    leads = models.Lead.objects.all()
-    context = {
-        "leads": leads,
-    }
-    return render(request, "leads_lists.html", context)
+class HomeView(TemplateView):
+    template_name = "home.html"
+
+
+class ListsView(ListView):
+    template_name = "leads_lists.html"
+    queryset = models.Lead.objects.all()
+    context_object_name = "leads"
 
 
 def lead_detail(request, pk):
