@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %} O'chirish {% endblock %}
+
+{% block content %}
+
+    <a href="/leads/">Mijozlar bo'limi</a>
+    <hr>
+    <h1>Formani ochirishga rozimisiz</h1>
+    <form method="post">
+        <p>
+        {% csrf_token %} 
+        {{ form.as_p }}
+        <button type="submit">O'chirish</button>
+    </form>
+
+{% endblock %}

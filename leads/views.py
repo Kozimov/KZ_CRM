@@ -1,7 +1,7 @@
 
 from multiprocessing import context
 from django.shortcuts import render, redirect, reverse
-from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView
+from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
 from . import models
 from .forms import *
 import leads
@@ -38,10 +38,11 @@ class LeadUpdateView(UpdateView):
     def get_success_url(self):
         return reverse("leads:lists")
 
+class LeadDeleteView(DeleteView):
+    template_name = "leads/delete.html"
+    queryset = models.Lead.objects.all()
 
+    def get_success_url(self):
+        return reverse("leads:lists")
 
-def lead_delete(request, pk):
-    lead = models.Lead.objects.get(id=pk)
-    lead.delete()
-    return redirect("/leads")
 
