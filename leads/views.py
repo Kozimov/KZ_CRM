@@ -1,7 +1,7 @@
 
 from multiprocessing import context
 from django.shortcuts import render, redirect, reverse
-from django.views.generic import TemplateView, ListView, DetailView, CreateView
+from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView
 from . import models
 from .forms import *
 import leads
@@ -29,21 +29,29 @@ class LeadCreateView(CreateView):
 
     def get_success_url(self):
         return reverse("leads:lists")
-        
 
-def lead_update(request, pk):
-    lead = models.Lead.objects.get(id=pk)
-    form = LeadModelForm(instance=lead)
-    if request.method == "POST":
-        form = LeadModelForm(request.POST, instance=lead)
-        if form.is_valid():
-            form.save()
-            return redirect("/leads")
-    context = {
-        "form": form,
-        'lead': lead
-    }
-    return render(request, "update.html", context)
+class LeadUpdateView(UpdateView):
+    template_name = "update.html"
+    form_class = LeadModelForm
+    queryset = models.Lead.objects.all()
+
+    def get_success_url(self):
+        return reverse("leads:lists")
+
+
+# def lead_update(request, pk):
+#     lead = models.Lead.objects.get(id=pk)
+#     form = LeadModelForm(instance=lead)
+#     if request.method == "POST":
+#         form = LeadModelForm(request.POST, instance=lead)
+#         if form.is_valid():
+#             form.save()
+#             return redirect("/leads")
+#     context = {
+#         "form": form,
+#         'lead': lead
+#     }
+#     return render(request, "update.html", context)
 
 def lead_delete(request, pk):
     lead = models.Lead.objects.get(id=pk)
