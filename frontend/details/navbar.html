@@ -11,13 +11,35 @@
       <a href="/leads/" class="mr-5 hover:text-gray-900">Mijozlar</a>
       <a class="mr-5 hover:text-gray-900">Link</a>
     </nav>
-    <button class="inline-flex items-center bg-blue-300 border-0 py-1 px-3 focus:outline-none hover:bg-blue-200 rounded text-base mt-4 md:mt-0" style="margin-right: 20px">Ro'yxatdan o'tish
+
+    {% if not request.user.is_authenticated %}
+    <button class="inline-flex items-center bg-blue-300 border-0 py-1 px-3 focus:outline-none hover:bg-blue-200 rounded text-base mt-4 md:mt-0" style="margin-right: 20px">
+      <a href="{% url 'signup' %}">
+      Ro'yxatdan o'tish
+      </a>
     </button>
-    <button class="inline-flex items-center bg-blue-300 border-0 py-1 px-3 focus:outline-none hover:bg-blue-200 rounded text-base mt-4 md:mt-0">Kirish
+    {% endif %}
+
+    {% if request.user.is_authenticated %}
+     <b>user:  </b> {{ request.user.username }}
+      <button class="inline-flex items-center bg-blue-300 border-0 py-1 px-3 focus:outline-none hover:bg-blue-200 rounded text-base mt-4 md:mt-0 ml-3">
+        <a href="{% url 'logout' %}">
+        Chiqish
+        </a>
+        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+          <path d="M5 12h14M12 5l7 7-7 7"></path>
+        </svg>
+      </button>
+    {% else %}
+    <button class="inline-flex items-center bg-blue-300 border-0 py-1 px-3 focus:outline-none hover:bg-blue-200 rounded text-base mt-4 md:mt-0">
+      <a href="{% url 'login' %}">
+      Kirish
+      </a>
       <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
         <path d="M5 12h14M12 5l7 7-7 7"></path>
       </svg>
     </button>
+    {% endif %}
     
   </div>
 </header>
