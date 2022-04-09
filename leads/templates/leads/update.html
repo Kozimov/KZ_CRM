@@ -11,7 +11,7 @@
     
       <div class="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
         <h2 class="text-sm title-font text-gray-500 tracking-widest">BRAND NAME</h2>
-        <h1 class="text-gray-900 text-3xl title-font font-medium mb-4">Animated Night Hill Illustrations</h1>
+        <h1 class="text-gray-900 text-3xl title-font font-medium mb-4">{{ lead.ismi }} {{ lead.familiyasi }}</h1>
         <div class="flex mb-4">
           <a href="{% url 'leads:detallar' lead.pk %}" class="flex-grow border-b-2 border-gray-300 py-2 text-lg px-1">
             Ma'lumotlar
@@ -27,7 +27,7 @@
             <p> 
             {% csrf_token %} 
             {{ form.as_p }}
-            <button type="submit" class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Yangilash</button>
+            <button type="submit" class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded mb-2">Yangilash</button>
             <button class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"><a href="{% url 'leads:delete' lead.pk %}">O'chirish </a></button>
         </form>
       </div>
