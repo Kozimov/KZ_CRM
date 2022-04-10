@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}  Agent o'chirish {% endblock %}
+
+{% block content %}
+
+    <a href="/leads/">Mijozlar bo'limi</a>
+    <h1>O'chirishga aminmisiz</h1>
+    <form method="post">
+        <p>
+        {% csrf_token %} 
+        {{ forms.as_p }}
+        <button type="submit">Jo'natish</button>
+    </form>
+{% endblock %}

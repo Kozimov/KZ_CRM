@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Agent - O'zgartirish {% endblock %}
+
+{% block content %}
+
+    <section class="text-gray-600 body-font overflow-hidden">
+    <div class="container px-5 py-24 mx-auto">
+    <div class="lg:w-4/5 mx-auto flex flex-wrap">
+        <img alt="ecommerce" class="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0 object-cover object-center rounded" src="https://dummyimage.com/400x400">
+    
+      <div class="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
+        <h2 class="text-sm title-font text-gray-500 tracking-widest">Agentlar</h2>
+        <h1 class="text-gray-900 text-3xl title-font font-medium mb-4">{{ agent.user.username }}</h1>
+        <div class="flex mb-4">
+            <a href="{% url 'agents:agent-detail' agent.pk %}" class="flex-grow border-b-2 border-gray-300 py-2 text-lg px-1">
+                Ma'lumotlar
+            </a>
+            <a href="{% url 'agents:agent-update' agent.pk %}" class="flex-grow text-indigo-500 border-b-2 border-indigo-500 py-2 text-lg px-1www">
+                O'zgartirish
+            </a>
+        </div>
+        <form method="post">
+            <p>
+            {% csrf_token %} 
+            {{ form.as_p }}
+            <button type="submit" class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Yangilash</button>
+            <button class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"><a href="{% url 'agents:agent-delete' agent.pk %}">O'chirish </a></button>
+        </form>
+      </div>
+    
+    </div>
+    </div>
+    </section>   
+
+{% endblock %}

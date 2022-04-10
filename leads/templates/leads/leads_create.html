@@ -1,14 +1,15 @@
 {% extends 'base.html' %}
 
-{% block title %} Agent yaratish {% endblock %}
+{% block title %} Mijoz yaratish {% endblock %}
 
 {% block content %}
 
-    <a href="/agents/">Agentlar bo'limi</a>
-    <hr>
+    <a href="/leads/">Mijozlar bo'limi</a>
+
     <form method="post">
         <p>
         {% csrf_token %} 
+        <br>
         {{ form.as_p }}
         <button type="submit">Jo'natish</button>
     </form>

@@ -1,15 +1,13 @@
 {% extends 'base.html' %}
 
-{% block title %} Kozimov Login {% endblock %}
+{% block title %} SUCRM - Login {% endblock %}
 
 {% block content %}
-
-    <hr>
     <form method="post">
         <p>
         {% csrf_token %} 
+        <br>
         {{ form.as_p }}
         <button type="submit">Login</button>
     </form>
-
 {% endblock %}
