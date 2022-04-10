@@ -15,7 +15,9 @@
           </a>
         </button>
     {% else %}
+        {% if request.user.is_organisor %}
         <a href="/agents/" class="mr-5 hover:text-gray-900">Agentlar</a>
+        {% endif %}
         <a href="/leads/" class="mr-5 hover:text-gray-900">Mijozlar</a>
       </nav>
     {% endif %}
