@@ -10,6 +10,6 @@
         {{ form.as_p }}
         <button type="submit">Login</button>
         <hr>
-        <a href="">Parolni unutdizmi?</a>
+        <a href="{% url 'password_reset_view' %}">Parolni unutdizmi?</a>
     </form>
 {% endblock %}
