@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.views import LoginView, LogoutView, PasswordResetView
 from django.urls import path, include
 from leads.views import HomeView, SigupView
 
