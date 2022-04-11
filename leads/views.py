@@ -18,8 +18,17 @@ class HomeView(TemplateView):
 
 class LeadListView(LoginRequiredMixin, ListView):
     template_name = "leads/leads_list.html"
-    queryset = Lead.objects.all()
     context_object_name = "leads"
+
+    def get_queryset(self):
+        user = self.request.user
+        if user.is_organisor:
+            queryset = Lead.objects.filter(organisation = user.userprofile)
+        else:
+            queryset = Lead.objects.filter(organisation = user.agent.organisation)
+            queryset = queryset.filter(agent__user = self.request.user)
+
+        return queryset
 
 class LeadDetailView(OrganiserAndLoginRequiredMixin, DetailView):
     template_name = "leads/leads_detail.html"
