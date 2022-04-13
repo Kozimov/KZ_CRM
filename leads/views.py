@@ -1,7 +1,7 @@
 from django.core.mail import send_mail
 from django.shortcuts import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import *
 from .models import *
 from .forms import *
 from agents.mixins import OrganiserAndLoginRequiredMixin
@@ -77,5 +77,12 @@ class LeadDeleteView(OrganiserAndLoginRequiredMixin, DeleteView):
     template_name = "leads/leads_delete.html"
     queryset = Lead.objects.all()
     
+    def get_success_url(self):
+        return reverse("leads:lead-list")
+
+class AgentAssignView(OrganiserAndLoginRequiredMixin, FormView):
+    template_name = "leads/agentni_aniqlash.html"
+    form_class = AssignAgentForm
+
     def get_success_url(self):
         return reverse("leads:lead-list")
