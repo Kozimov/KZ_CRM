@@ -84,5 +84,19 @@ class AgentAssignView(OrganiserAndLoginRequiredMixin, FormView):
     template_name = "leads/agentni_aniqlash.html"
     form_class = AssignAgentForm
 
+    def get_form_kwargs(self, **kwargs):
+        kwargs = super(AgentAssignView, self).get_form_kwargs(**kwargs)
+        kwargs.update({
+            "request": self.request
+        })
+        return kwargs
+
     def get_success_url(self):
         return reverse("leads:lead-list")
+
+    def form_valid(self, form):
+        agent = form.cleaned_data["agent"]
+        lead = Lead.objects.get(id=self.kwargs["pk"])
+        lead.agent = agent
+        lead.save()
+        return super(AgentAssignView, self).form_valid(form)
