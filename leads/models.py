@@ -19,9 +19,17 @@ class Lead(models.Model):
     yoshi = models.IntegerField(default=0)
     organisation = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     agent = models.ForeignKey("Agent", null=True, blank=True, on_delete=models.SET_NULL)
+    category = models.ForeignKey("Category", null=True, blank=True, on_delete=models.SET_NULL)
 
     def __str__(self):
         return str(self.familiyasi)
+
+class Category(models.Model):
+    nomi = models.CharField(max_length=20)
+
+    def __str__(self):
+        return str(self.nomi)
+
 
 class Agent(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
