@@ -103,5 +103,16 @@ class AgentAssignView(OrganiserAndLoginRequiredMixin, FormView):
 
 class CategoryListView(LoginRequiredMixin, ListView):
     template_name = "leads/categories.html"
-    queryset = Category.objects.all()
     context_object_name = "categories"
+
+    def get_queryset(self):
+        user = self.request.user
+        if user.is_organisor:
+            queryset = Category.objects.filter(
+                organisation = user.userprofile
+            )
+        else:
+            queryset = Category.objects.filter(
+                organisation = user.agent.organisation
+            )
+        return queryset
