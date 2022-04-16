@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %} Mijoz yaratish {% endblock %}
+
+{% block content %}
+
+    <h1>Kategoriya</h1>
+        {% for category in categories %}
+            {{ category.nomi }}
+        {% endfor %}
+
+{% endblock %}

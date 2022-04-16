@@ -100,3 +100,8 @@ class AgentAssignView(OrganiserAndLoginRequiredMixin, FormView):
         lead.agent = agent
         lead.save()
         return super(AgentAssignView, self).form_valid(form)
+
+class CategoryListView(LoginRequiredMixin, ListView):
+    template_name = "leads/categories.html"
+    queryset = Category.objects.all()
+    context_object_name = "categories"
