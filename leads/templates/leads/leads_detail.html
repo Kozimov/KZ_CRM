@@ -16,6 +16,10 @@
             <a href="{% url 'leads:detallar' lead.pk %}" class="flex-grow text-indigo-500 border-b-2 border-indigo-500 py-2 text-lg px-1">
                 Ma'lumotlar
             </a>
+
+            <a href="{% url 'leads:category_update_detail' lead.pk %}" class="flex-grow border-b-2 border-gray-300 py-2 text-lg px-1">
+                Fani
+            </a>
             <a href="{% url 'leads:update' lead.pk %}" class="flex-grow border-b-2 border-gray-300 py-2 text-lg px-1">
                 O'zgartirish
             </a>

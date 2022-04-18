@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %} Mijoz Fani {% endblock %}
+
+{% block content %}
+
+    <a href="/leads/">Fan</a>
+
+    <form method="post">
+        <p>
+        {% csrf_token %} 
+        <br>
+        {{ form.as_p }}
+        <button type="submit">Yangilash</button>
+    </form>
+
+{% endblock %}
