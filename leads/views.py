@@ -57,14 +57,17 @@ class LeadCreateView(OrganiserAndLoginRequiredMixin, CreateView):
     def get_success_url(self):
         return reverse("leads:lead-list")
 
-    # def form_valid(self, form):
-    #     send_mail(
-    #         subject="Bu lead yaratilingan",
-    #         message="Yangi lead yarat",
-    #         from_email="test@test.com",
-    #         recipient_list=["test2@test.com"],
-    #     )
-    #     return super(LeadCreateView, self).form_valid(form)
+    def form_valid(self, form):
+        lead = form.save(commit=False)
+        lead.organisation = self.request.user.userprofile
+        lead.save()
+        send_mail(
+            subject="Bu lead yaratilingan",
+            message="Yangi lead yarat",
+            from_email="test@test.com",
+            recipient_list=["test2@test.com"],
+        )
+        return super(LeadCreateView, self).form_valid(form)
 
 class LeadUpdateView(OrganiserAndLoginRequiredMixin, UpdateView):
     template_name = "leads/leads_update.html"
