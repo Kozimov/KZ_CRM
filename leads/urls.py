@@ -10,5 +10,6 @@ urlpatterns = [
     path('<int:pk>/delete', LeadDeleteView.as_view(), name="delete"),
     path('<int:pk>/agentni_aniqlash', AgentAssignView.as_view(), name="assign_agent"),
     path('create-leads/', LeadCreateView.as_view(), name="lead-create"),
-    path('categories/', CategoryListView.as_view(), name="categories")
+    path('categories/', CategoryListView.as_view(), name="categories"),
+    path('categories/<int:pk>', CategoryDetailView.as_view(), name="category")
 ]
