@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load tailwind_filters %}
+
 
 {% block title %}Agent - O'zgartirish {% endblock %}
 
@@ -23,9 +25,9 @@
         <form method="post">
             <p>
             {% csrf_token %} 
-            {{ form.as_p }}
-            <button type="submit" class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Yangilash</button>
-            <button class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"><a href="{% url 'agents:agent-delete' agent.pk %}">O'chirish </a></button>
+            {{ form|crispy }}
+            <button type="submit" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">Yangilash</button>
+            
         </form>
       </div>
     

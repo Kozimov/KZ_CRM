@@ -1,16 +1,15 @@
 {% load static %}
 <header class="text-gray-600 body-font">
   <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-    <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-      <img src="{% static 'img/logo-dark.png' %}" style="width: 80px;" alt="Logo">
-      <span class="ml-3 text-xl">SUSYS Academy</span>
+    <a href="/" class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+      <span class="ml-3 text-xl">Kozimov Academy CRM</span>
     </a>
     <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
       <a href="/" class="mr-5 hover:text-gray-900">Home</a>
 
     {% if not request.user.is_authenticated %}
       </nav>
-        <button class="inline-flex items-center bg-blue-300 border-0 py-1 px-3 focus:outline-none hover:bg-blue-200 rounded text-base mt-4 md:mt-0" style="margin-right: 20px">
+        <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" style="margin-right: 20px">
           <a  href="{% url 'signup' %}">Ro'yxatdan o'tish
           </a>
         </button>
@@ -24,12 +23,12 @@
 
     {% if request.user.is_authenticated %}
       Foydalanuvchi: {{ request.user.username }}
-      <button class="ml-3 inline-flex items-center bg-blue-300 border-0 py-1 px-3 focus:outline-none hover:bg-blue-200 rounded text-base mt-4 md:mt-0">
+      <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded ml-3">
         <a  href="{% url 'logout' %}">Chiqish
         </a>
       </button>
     {% else %}
-    <button class="inline-flex items-center bg-blue-300 border-0 py-1 px-3 focus:outline-none hover:bg-blue-200 rounded text-base mt-4 md:mt-0">
+    <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
       <a href="{% url 'login' %}">Kirish
     </a>
     </button>

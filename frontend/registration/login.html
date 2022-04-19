@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load tailwind_filters %}
 
 {% block title %} SUCRM - Login {% endblock %}
 
@@ -7,9 +8,9 @@
         <p>
         {% csrf_token %} 
         <br>
-        {{ form.as_p }}
-        <button type="submit">Login</button>
-        <hr>
+        {{ form|crispy }}
+        <button class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mr-5" type="submit">Login</button>
+
         <a href="{% url 'password_reset_view' %}">Parolni unutdizmi?</a>
     </form>
 {% endblock %}
